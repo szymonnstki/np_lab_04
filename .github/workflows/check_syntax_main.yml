@@ -1,0 +1,38 @@
+name: check_syntax
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_syntax:
+    runs-on: 
+      - ubuntu-latest
+      - windows-latest
+
+    strategy:
+      matrix:
+        python-version: [3.9, 3.11]
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          pip: latest
+
+      - name: Install flake8 and unittest
+        run: |
+          pip install flake8
+          pip install unittest
+
+      - name: Display Python version
+        run: |
+          python --version
+
+      - name: Run flake8
+        run: flake8 .
+
+      - name: Run unittest
+        run: python -m unittest discover -v
