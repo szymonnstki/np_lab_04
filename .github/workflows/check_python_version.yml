@@ -1,1 +1,22 @@
 
+name: check_python_version
+
+on:
+  push:
+    branches:
+      - check_python_version
+
+jobs:
+  check_python_version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Konfiguracja Pythona
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+          pip: latest
+
+      - name: Wyświetl wersję Pythona
+        run: |
+          python --version
