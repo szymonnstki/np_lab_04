@@ -13,7 +13,7 @@ jobs:
       - name: Konfiguracja Pythona
         uses: actions/setup-python@v3
         with:
-          python-version: [3.9, 3.10, 3.11]
+          python-version: [3.11]
           pip: latest
 
       - name: Instalacja flake8
