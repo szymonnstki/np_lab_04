@@ -7,13 +7,11 @@ on:
 
 jobs:
   check_syntax:
-    runs-on: 
-      - ubuntu-latest
-    
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: [3.11]
+        python-version: [3.8, 3.9, 3.10]
 
     steps:
       - name: Set up Python
@@ -22,10 +20,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           pip: latest
 
-      - name: Install flake8 and unittest
+      - name: Install flake8
         run: |
+          pip install --upgrade pip
           pip install flake8
-          pip install unittest
 
       - name: Display Python version
         run: |
