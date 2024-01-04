@@ -9,7 +9,7 @@ jobs:
   check_syntax:
     runs-on: 
       - ubuntu-latest
-      - windows-latest
+    
 
     strategy:
       matrix:
